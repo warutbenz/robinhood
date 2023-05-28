@@ -1,0 +1,11 @@
+server:
+  port: 8080
+
+mongodb:
+  dbname: "demo"
+  dbcollections:
+    interviews: "interviews"
+    users: "users"
+  dbuser: "user_name"
+  dbpassword: "user_pass"
+  dbhost: "localhost:27017"

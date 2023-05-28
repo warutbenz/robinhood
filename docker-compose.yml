@@ -1,0 +1,24 @@
+version: "3.9"
+
+services:
+  api:
+    build:
+      dockerfile: ./Dockerfile
+    ports:
+      - 8080:8080
+    environment:
+      MONGODB.DBHOST: "mongodb:27017"
+      MONGODB.DBUSER: "admin"
+      MONGODB.DBPASSWORD: "password"
+    external_links:
+      - mongodba
+      # Start app
+    command: reflex -g '*.go' go run main.go --start-service
+
+  mongodb:
+    image: mongo
+    ports:
+      - 27017:27017
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: "admin"
+      MONGO_INITDB_ROOT_PASSWORD: "password"
